@@ -6,20 +6,28 @@ public class LivingThing {
     int attack;
     boolean dead;
 
+
     public LivingThing (String name, int maximumHP, int attack) {
-        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
         this.name = name;
         hitPoint = maximumHP;
         this.attack = attack;
         dead = false;
+        System.out.printf("%sのHPは%d。攻撃力は%dです。\n", name, maximumHP, attack);
     }
 
-    public boolean isDead() { return dead; }
-    public String getName() { return name; }
+
+    public boolean isDead() {
+        return dead;
+    }
+
+    public String getName(){
+        return name;
+    }
+
 
     public void attack(LivingThing opponent) {
         int damage = (int) (Math.random() * attack);
-        if (dead == true)
+        if (dead != false)
             damage = 0;
         System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n", name, opponent.getName(), damage);
         opponent.wounded(damage);
